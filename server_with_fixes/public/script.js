@@ -44,18 +44,20 @@ const socket = io();
 
 socket.on('chat message', (data) => {
     const chatContainer = document.getElementById('chat-container');
-    const messageElement = document.createElement('p');
-    messageElement.innerHTML += `${data.username}:`;
-    messageElement.innerHTML += data.message;
-    chatContainer.appendChild(messageElement);
+    // const messageElement = document.createElement('p');
+    // messageElement.innerHTML += `${data.username}:`;
+    // messageElement.innerHTML += data.message;
+    // chatContainer.appendChild(messageElement);
+    chatContainer.innerHTML += '<p>' + data.message + '</p>';
 });
 
 socket.on('chat history', (history) => {
     const chatContainer = document.getElementById('chat-container');
     history.forEach((message) => {
-        const messageElement = document.createElement('p');
-        messageElement.textContent = `${message.sender_username}: ${message.content}`;
-        chatContainer.appendChild(messageElement);
+        // const messageElement = document.createElement('p');
+        // messageElement.textContent = `${message.sender_username}: ${message.content}`;
+        // chatContainer.appendChild(messageElement);
+        chatContainer.innerHTML += '<p>' + message.content + '</p>';
 
     });
 });
